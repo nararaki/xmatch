@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  # Next.jsコンテナ
+  frontend:
+    image: node:18
+    container_name: frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app  # frontendディレクトリをコンテナ内の/appにマウント
+    ports:
+      - '3000:3000'  # ホストのポート3000をコンテナのポート3000にマッピング
+    command: npm run dev  # Next.jsをデベロップモードで起動
+    environment:
+      - NODE_ENV=development
+    networks:
+      - app-network
+
+  # Signalinkコンテナ
+  signalink:
+    build:
+      context: ./node-signalink
+    container_name: signalink
+    ports:
+      - '8000:8000'
+    networks:
+      - app-network
+
+  # MySQLコンテナ
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: nararaki
+      MYSQL_PASSWORD: AnAnin90
+    ports:
+      - '3307:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql    
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
+
