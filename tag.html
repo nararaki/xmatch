@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>興味選択フォーム</title>
+</head>
+<body>
+  <form id="interestForm">
+    <fieldset>
+      <legend>興味のあるものを選択してください（最大3つまで）</legend>
+      <div>
+        <label>
+          <input type="checkbox" id="travel" name="interest" value="travel,geography" /> 旅行,地理
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="music" name="interest" value="music" /> 音楽
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="art" name="interest" value="art" /> 美術
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="sports" name="interest" value="sports" /> スポーツ
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="cooking" name="interest" value="cooking" /> 料理
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="anime-manga" name="interest" value="anime-manga" /> アニメ-漫画
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" id="other" name="interest" value="other" /> その他
+        </label>
+        <input type="text" id="otherValue" name="other" aria-label="Other interest" />
+      </div>
+      <div>
+        <button type="submit">次へ</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <script src="./tag.js"></script>
+</body>
+</html>
+
+       
